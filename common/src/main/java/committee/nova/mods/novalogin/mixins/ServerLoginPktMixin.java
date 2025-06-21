@@ -102,7 +102,7 @@ public abstract class ServerLoginPktMixin {
         Validate.validState(StringUtil.isValidPlayerName(playerName), "Invalid characters in username");
         this.requestedUsername = playerName;
         Pattern pattern = Pattern.compile("^[\\u4e00-\\u9fa5a-zA-Z0-9]{6,25}$");
-        //Validate.validState(!pattern.matcher(playerName).matches(), "Invalid characters in username");
+        Validate.validState(!pattern.matcher(playerName).matches(), "Invalid characters in username");
         GameProfile gameprofile = this.server.getSingleplayerProfile();
         if (gameprofile != null && this.requestedUsername.equalsIgnoreCase(gameprofile.getName())) {
             if (configHandler.config.getCommon().isUuidTrans()){

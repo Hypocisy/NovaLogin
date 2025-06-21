@@ -1,7 +1,5 @@
 package committee.nova.mods.novalogin.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Setter;
 import net.minecraft.server.level.ServerPlayer;
 
 import java.util.HashMap;
@@ -16,21 +14,28 @@ import java.util.HashMap;
  */
 public class LoginUsers extends HashMap<String, LoginUsers.LoginUser> {
 
-    public static LoginUsers INSTANCE = new LoginUsers();
+	public static LoginUsers INSTANCE = new LoginUsers();
 
-    public LoginUser get(ServerPlayer player) {
-        String username = player.getGameProfile().getName();
-        if (containsKey(username)) {
-            return super.get(username);
-        }
-        LoginUser newPlayer = new LoginUser();
-        put(username, newPlayer);
-        return newPlayer;
-    }
+	public LoginUser get(ServerPlayer player) {
+		String username = player.getGameProfile().getName();
+		if (containsKey(username)) {
+			return super.get(username);
+		}
+		LoginUser newPlayer = new LoginUser();
+		put(username, newPlayer);
+		return newPlayer;
+	}
 
-    @Setter
-    public static class LoginUser{
-        public boolean login = false;
-        public boolean reLogin = false;
-    }
+	public static class LoginUser {
+		public boolean login = false;
+		public boolean reLogin = false;
+
+		public void setLogin(boolean login) {
+			this.login = login;
+		}
+
+		public void setReLogin(boolean reLogin) {
+			this.reLogin = reLogin;
+		}
+	}
 }

@@ -38,5 +38,6 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 tasks.withType(Javadoc).configureEach {
-    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    it.options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    it.options.addStringOption('Xdoclint:none', '-quiet')
 }

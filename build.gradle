@@ -57,20 +57,30 @@ subprojects {
             name = "novaRepositoryReleases"
             url = "https://maven.nova-committee.cn/releases"
         }
+        maven {
+            name = "Curse maven"
+            url "https://cursemaven.com"
+        }
     }
 
     dependencies {
         implementation("org.mindrot:jbcrypt:0.4")
         implementation("javax.mail:mail:1.4.4")
         //implementation("cn.evole.config:AtomConfig-Yaml:0.2.0")
-        compileOnly ("org.projectlombok:lombok:1.18.30")
-        annotationProcessor ("org.projectlombok:lombok:1.18.30")
+//        compileOnly ("org.projectlombok:lombok:1.18.30")
+//        annotationProcessor ("org.projectlombok:lombok:1.18.30")
+        implementation(files("E:\\dev\\NovaLogin\\common\\lib\\neovelocity-neoforge-1.2.4.jar"))
+
     }
 
     tasks.withType(JavaCompile).configureEach {
     
         it.options.encoding = 'UTF-8'
         it.options.getRelease().set(21)
+    }
+    tasks.withType(Javadoc).configureEach {
+        it.options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+        it.options.addStringOption('Xdoclint:none', '-quiet')
     }
 
     processResources {

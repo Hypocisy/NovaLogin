@@ -1,7 +1,7 @@
 plugins {
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.178'
+    id 'net.neoforged.gradle.userdev' version '7.0.184'
     id 'java-library'
 }
 base {
@@ -46,6 +46,7 @@ configurations {
 dependencies {
     implementation "net.neoforged:neoforge:${neoforge_version}"
     compileOnly project(":common")
+    implementation "curse.maven:connectivity-470193:6050421"
 
     jarJar ("org.mindrot:jbcrypt:[0.4,)")
     jarJar ("javax.mail:mail:[1.4.4,)")
